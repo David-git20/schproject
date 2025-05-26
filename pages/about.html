@@ -18,7 +18,7 @@
 </head>
 <body class="font-sans text-gray-700" style="background-color: #F7F7F7;">
   <!-- Header -->
-  <header class="flex flex-col justify-between items-center gap-3">
+  <!-- <header class="flex flex-col justify-between items-center gap-3">
     <div ><img src="../assets/images/uniLogo-removebg-preview.png" alt="" class="w-36"></div>
     <nav class="space-x-8 text-sm">
     <a href="index.html" target="_blank" class="hover:underline hover:font-bold">Home</a>
@@ -26,9 +26,50 @@
     <a href="about.html" target="_blank" class="hover:underline hover:font-bold">About</a>
     <a href="contact.html" target="_blank" class="hover:underline hover:font-bold">Location & Contact</a>
     </nav>
-  </header>
+  </header> -->
+
+  <header class="bg-white shadow-sm px-4 py-4 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <!-- Desktop Layout -->
+            <div class="hidden md:flex flex-col justify-between items-center gap-6 ">
+                <div class="flex-shrink-0">
+                    <img src="../assets/images/uniLogo-removebg-preview.png" alt="University Logo" class="w-32 lg:w-36">
+                </div>
+                <nav class="flex space-x-6 lg:space-x-8 text-sm">
+                    <a href="index.html" target="_blank" class="hover:underline hover:font-bold transition-all duration-200">Home</a>
+                    <a href="#" target="_blank" class="hover:underline hover:font-bold transition-all duration-200">Apply & Enroll</a>
+                    <a href="about.html" target="_blank" class="hover:underline hover:font-bold transition-all duration-200">About</a>
+                    <a href="contact.html" target="_blank" class="hover:underline hover:font-bold transition-all duration-200">Location & Contact</a>
+                </nav>
+            </div>
+
+            <!-- Mobile Layout -->
+            <div class="md:hidden">
+                <div class="flex justify-between items-center">
+                    <div class="flex-shrink-0">
+                        <img src="../assets/images/uniLogo-removebg-preview.png" alt="University Logo" class="w-32">
+                    </div>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu -->
+                <nav id="mobile-menu" class="hidden mt-4 pt-4 border-t border-gray-200">
+                    <div class="flex flex-col space-y-3">
+                        <a href="index.html" target="_blank" class="py-2 px-3 rounded-md hover:bg-gray-100 hover:font-bold transition-all duration-200 text-sm">Home</a>
+                        <a href="#" target="_blank" class="py-2 px-3 rounded-md hover:bg-gray-100 hover:font-bold transition-all duration-200 text-sm">Apply & Enroll</a>
+                        <a href="about.html" target="_blank" class="py-2 px-3 rounded-md hover:bg-gray-100 hover:font-bold transition-all duration-200 text-sm">About</a>
+                        <a href="contact.html" target="_blank" class="py-2 px-3 rounded-md hover:bg-gray-100 hover:font-bold transition-all duration-200 text-sm">Location & Contact</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
   <!-- Hero section -->
-   <section class="relative mt-2 mb-6">
+   <section class="relative  mb-6">
     <img src="../assets/images/uniAdminBuilding.jpg" alt="" class="w-full h-96 object-cover">
     <div class="absolute  inset-0 flex flex-col justify-center items-center space-y-3 text-white bg-black/35">
       <p class="text-center text-3xl font-extrabold tracking-wider drop-shadow-[2px_2px_2px_rgba(0,0,0,0.7)]">Spring 2025 Applications <span class="block text-center "> Are Now Open</span></p>
@@ -160,7 +201,7 @@
       </section>
        <!-- Footer -->
         <section class="py-10" style="background-color: #121F41;">
-          <div class="grid grid-cols-2 md:grid-cols-4 p-10 space-y-4 text-white place-items-center" >
+          <div class="grid grid-cols-2 md:grid-cols-4 md:p-10 space-y-4 text-white place-items-center" >
           <div class="flex flex-col items-center">
             <h6 class="mb-3 font-bold text-xl">Admission office</h6><br>
             <p>info@mysite.com</p>
@@ -183,8 +224,8 @@
           </div>
         </div>
         <div>
-          <div class="flex flex-col space-y-5 md:flex-row p-6 justify-between items-center">
-            <p class="font-extrabold text-5xl ">State University</p>
+          <div class="flex flex-col space-y-5 lg:flex-row p-6 justify-between items-center">
+            <p class="font-extrabold text-3xl md:text-5xl ">State University</p>
             <div class="flex flex-col ">
   
               <ul class="flex flex-col items-center">
@@ -207,5 +248,44 @@
    
         </section>
         
+
+         <script>
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            
+            // Update button icon
+            const svg = mobileMenuBtn.querySelector('svg path');
+            if (mobileMenu.classList.contains('hidden')) {
+                // Show hamburger icon
+                svg.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                // Show X icon
+                svg.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+                // Reset to hamburger icon
+                const svg = mobileMenuBtn.querySelector('svg path');
+                svg.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        });
+
+        // Close mobile menu when window is resized to desktop size
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                mobileMenu.classList.add('hidden');
+                const svg = mobileMenuBtn.querySelector('svg path');
+                svg.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        });
+    </script>
 </body>
 </html>
